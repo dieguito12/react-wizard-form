@@ -1,0 +1,35 @@
+{
+  "name": "react-wizard-form",
+  "version": "1.0.0",
+  "description": "Simple react wizard for any html view, form or react component",
+  "main": "index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/babel wizardform.js -o index.js",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dieguito12/react-wizard-form.git"
+  },
+  "keywords": [
+    "react",
+    "wizard",
+    "form"
+  ],
+  "author": "Diego Rafael Mena Hernandez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dieguito12/react-wizard-form/issues"
+  },
+  "homepage": "https://github.com/dieguito12/react-wizard-form#readme",
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-0": "^6.22.0"
+  }
+}
