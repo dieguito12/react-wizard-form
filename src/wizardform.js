@@ -15,7 +15,6 @@ class WizardForm extends React.Component {
         this.state = {
             step: props.initialStep ? parseInt(props.initialStep) : 0,
             data: '',
-            showHeaders: true,
             headers: props.headers,
             elements: props.children,
             submitElementClass: props.submitElementClass,
@@ -136,7 +135,7 @@ class WizardForm extends React.Component {
         let headersParam = {
             onClick: this.onHeaderClick
         }
-        if(this.props.headers) {
+        if (this.props.headers) {
             this.props.headers.map(function (obj, i) {
                 headersParam.key = i;
                 AllHeaders.push(React.cloneElement(obj, headersParam));
@@ -147,7 +146,6 @@ class WizardForm extends React.Component {
             <div>
                 <div style={{display: 'inline-flex'}}>
                     {
-                        this.state.showHeaders &&
                         AllHeaders
                     }
                 </div>
