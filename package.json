@@ -4,7 +4,7 @@
   "description": "Simple react wizard for any html view, form or react component",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/babel wizardform.js -o index.js",
+    "build": "./node_modules/.bin/babel src/wizardform.js -o index.js",
     "prepublish": "npm run build"
   },
   "repository": {
