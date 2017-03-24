@@ -38,7 +38,6 @@ var WizardForm = function (_React$Component) {
         _this.state = {
             step: props.initialStep ? parseInt(props.initialStep) : 0,
             data: '',
-            showHeaders: true,
             headers: props.headers,
             elements: props.children,
             submitElementClass: props.submitElementClass,
@@ -186,7 +185,7 @@ var WizardForm = function (_React$Component) {
                 _react2.default.createElement(
                     'div',
                     { style: { display: 'inline-flex' } },
-                    this.state.showHeaders && AllHeaders
+                    AllHeaders
                 ),
                 this.state.elements[this.state.step]
             );
