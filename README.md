@@ -120,7 +120,11 @@ class StepOneForm extends React.Component {
                 <form onSubmit={this.handleOnNextButtonClicked}>
                     <label>
                         Name:
-                        <input type="text" this value={this.state.name} onChange={this.handleChange} />
+                        <input 
+                            type="text" 
+                            ref="name"
+                            value={this.state.name} 
+                            onChange={this.handleChange} />
                     </label>
                     <input type="submit" value="Submit" />
                 </form>
