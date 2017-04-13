@@ -144,11 +144,11 @@ class WizardForm extends React.Component {
 
         return (
             <div>
-                <div style={{display: 'inline-flex'}}>
+                <ul className={this.props.headerClass} style={{display: 'inline-flex'}}>
                     {
                         AllHeaders
                     }
-                </div>
+                </ul>
                 {this.state.elements[this.state.step]}
             </div>
         );
