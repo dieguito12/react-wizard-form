@@ -183,8 +183,8 @@ var WizardForm = function (_React$Component) {
                 'div',
                 null,
                 _react2.default.createElement(
-                    'div',
-                    { style: { display: 'inline-flex' } },
+                    'ul',
+                    { className: this.props.headerClass, style: { display: 'inline-flex' } },
                     AllHeaders
                 ),
                 this.state.elements[this.state.step]

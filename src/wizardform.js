@@ -101,6 +101,9 @@ class WizardForm extends React.Component {
                 params.key = i;
                 newElements.push(React.cloneElement(obj, params));
             });
+            if (this.props.onStepChanged) {
+                this.props.onStepChanged(this.state.step + 1);
+            }
             this.setState({
                 step: this.state.step + 1,
                 data: data,
@@ -122,6 +125,9 @@ class WizardForm extends React.Component {
                 params.key = i;
                 newElements.push(React.cloneElement(obj, params));
             });
+            if (this.props.onStepChanged) {
+                this.props.onStepChanged(this.state.step - 1);
+            }
             this.setState({
                 step: this.state.step - 1,
                 data: data,
