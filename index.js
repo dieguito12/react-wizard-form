@@ -117,6 +117,9 @@ var WizardForm = function (_React$Component) {
                     step: step,
                     data: data
                 });
+                if (this.props.onStepChanged) {
+                    this.props.onStepChanged(step);
+                }
             }
         }
     }, {
@@ -152,6 +155,9 @@ var WizardForm = function (_React$Component) {
                     data: data,
                     elements: newElements
                 });
+                if (this.props.onStepChanged) {
+                    this.props.onStepChanged(this.state.step + 1);
+                }
             }
         }
     }, {
@@ -177,6 +183,9 @@ var WizardForm = function (_React$Component) {
                     data: data,
                     elements: newElements
                 });
+                if (this.props.onStepChanged) {
+                    this.props.onStepChanged(this.state.step - 1);
+                }
             }
         }
     }, {

@@ -85,6 +85,9 @@ class WizardForm extends React.Component {
                 step: step,
                 data: data
             });
+            if (this.props.onStepChanged) {
+                this.props.onStepChanged(step);
+            }
         }
     }
 
@@ -118,6 +121,9 @@ class WizardForm extends React.Component {
                 data: data,
                 elements: newElements
             });
+            if (this.props.onStepChanged) {
+                this.props.onStepChanged(this.state.step + 1);
+            }
         }
     }
 
@@ -142,6 +148,9 @@ class WizardForm extends React.Component {
                 data: data,
                 elements: newElements
             });
+            if (this.props.onStepChanged) {
+                this.props.onStepChanged(this.state.step - 1);
+            }
         }
     }
 
