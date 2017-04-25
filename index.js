@@ -129,7 +129,8 @@ var WizardForm = function (_React$Component) {
                     nextStep: this.nextStep,
                     data: data,
                     previousStep: this.previousStep,
-                    navigate: this.navigate
+                    navigate: this.navigate,
+                    currentStep: this.state.step + 1
                 };
                 var newElements = [];
                 this.state.elements.map(function (obj, i) {
@@ -141,9 +142,6 @@ var WizardForm = function (_React$Component) {
                     data: data,
                     elements: newElements
                 });
-                if (this.props.onStepChanged) {
-                    this.props.onStepChanged(this.state.step);
-                }
             }
         }
     }, {
@@ -154,7 +152,8 @@ var WizardForm = function (_React$Component) {
                     nextStep: this.nextStep,
                     data: data,
                     previousStep: this.previousStep,
-                    navigate: this.navigate
+                    navigate: this.navigate,
+                    currentStep: this.state.step - 1
                 };
                 var newElements = [];
                 this.state.elements.map(function (obj, i) {
@@ -166,9 +165,6 @@ var WizardForm = function (_React$Component) {
                     data: data,
                     elements: newElements
                 });
-                if (this.props.onStepChanged) {
-                    this.props.onStepChanged(this.state.step);
-                }
             }
         }
     }, {

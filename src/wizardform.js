@@ -72,6 +72,7 @@ class WizardForm extends React.Component {
 
     navigate(step, data) {
         if (step => 0 && step < this.state.headers.length && step != this.state.step) {
+            data.currentStep = step;
             this.setState({
                 step: step,
                 data: data,
@@ -95,13 +96,15 @@ class WizardForm extends React.Component {
                 data: data,
                 previousStep: this.previousStep,
                 navigate: this.navigate,
-                currentStep: this.state.step + 1
             }
+
             let newElements = [];
             this.state.elements.map(function (obj, i) {
                 params.key = i;
                 newElements.push(React.cloneElement(obj, params));
             });
+
+            data.currentStep = this.state.step + 1;
             this.setState({
                 step: this.state.step + 1,
                 data: data,
@@ -117,13 +120,15 @@ class WizardForm extends React.Component {
                 data: data,
                 previousStep: this.previousStep,
                 navigate: this.navigate,
-                currentStep: this.state.step - 1
             }
+
             let newElements = [];
             this.state.elements.map(function (obj, i) {
                 params.key = i;
                 newElements.push(React.cloneElement(obj, params));
             });
+
+            data.currentStep = this.state.step - 1;
             this.setState({
                 step: this.state.step - 1,
                 data: data,
