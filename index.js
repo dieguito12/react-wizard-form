@@ -136,6 +136,9 @@ var WizardForm = function (_React$Component) {
                     params.key = i;
                     newElements.push(_react2.default.cloneElement(obj, params));
                 });
+                if (this.props.onStepChanged) {
+                    this.props.onStepChanged(this.state.step + 1);
+                }
                 this.setState({
                     step: this.state.step + 1,
                     data: data,
@@ -158,6 +161,9 @@ var WizardForm = function (_React$Component) {
                     params.key = i;
                     newElements.push(_react2.default.cloneElement(obj, params));
                 });
+                if (this.props.onStepChanged) {
+                    this.props.onStepChanged(this.state.step - 1);
+                }
                 this.setState({
                     step: this.state.step - 1,
                     data: data,
