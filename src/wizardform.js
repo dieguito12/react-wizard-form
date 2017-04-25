@@ -94,7 +94,8 @@ class WizardForm extends React.Component {
                 nextStep: this.nextStep,
                 data: data,
                 previousStep: this.previousStep,
-                navigate: this.navigate
+                navigate: this.navigate,
+                currentStep: this.state.step + 1
             }
             let newElements = [];
             this.state.elements.map(function (obj, i) {
@@ -106,9 +107,6 @@ class WizardForm extends React.Component {
                 data: data,
                 elements: newElements
             });
-            if (this.props.onStepChanged) {
-                this.props.onStepChanged(this.state.step);
-            }
         }
     }
 
@@ -118,7 +116,8 @@ class WizardForm extends React.Component {
                 nextStep: this.nextStep,
                 data: data,
                 previousStep: this.previousStep,
-                navigate: this.navigate
+                navigate: this.navigate,
+                currentStep: this.state.step - 1
             }
             let newElements = [];
             this.state.elements.map(function (obj, i) {
@@ -130,9 +129,6 @@ class WizardForm extends React.Component {
                 data: data,
                 elements: newElements
             });
-            if (this.props.onStepChanged) {
-                this.props.onStepChanged(this.state.step);
-            }
         }
     }
 
