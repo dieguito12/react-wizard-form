@@ -37,7 +37,7 @@ var WizardForm = function (_React$Component) {
 
         _this.state = {
             step: props.initialStep ? parseInt(props.initialStep) : 0,
-            data: '',
+            data: "",
             headers: props.headers,
             elements: props.children,
             submitElementClass: props.submitElementClass,
@@ -47,6 +47,7 @@ var WizardForm = function (_React$Component) {
         var params = {
             nextStep: _this.nextStep,
             data: _this.state.data,
+            currentStep: _this.state.step,
             previousStep: _this.previousStep,
             navigate: _this.navigate
         };
@@ -76,8 +77,14 @@ var WizardForm = function (_React$Component) {
     }, {
         key: 'componentWillReceiveProps',
         value: function componentWillReceiveProps(nextProps) {
+            if (nextProps.initialStep) {
+                if (nextProps.inOrder) {
+                    if (this.state.step >= nextProps.initialStep) {
+                        this.navigate(nextProps.initialStep, this.state.data);
+                    }
+                }
+            }
             this.setState({
-                step: nextProps.initialStep ? parseInt(nextProps.initialStep) : 0,
                 elements: nextProps.children,
                 submitElementClass: nextProps.submitElementClass,
                 nextElementClass: nextProps.nextElementClass
@@ -85,6 +92,7 @@ var WizardForm = function (_React$Component) {
             var params = {
                 nextStep: this.nextStep,
                 data: this.state.data,
+                currentStep: this.state.step,
                 previousStep: this.previousStep,
                 navigate: this.navigate
             };
@@ -105,7 +113,6 @@ var WizardForm = function (_React$Component) {
             if (function (step) {
                 return 0 && step < _this2.state.headers.length && step != _this2.state.step;
             }) {
-                data.currentStep = step;
                 this.setState({
                     step: step,
                     data: data
@@ -126,10 +133,10 @@ var WizardForm = function (_React$Component) {
         key: 'nextStep',
         value: function nextStep(data) {
             if (this.state.elements.length - this.state.step > 1) {
-                data.currentStep = this.state.step + 1;
                 var params = {
                     nextStep: this.nextStep,
                     data: data,
+                    currentStep: this.state.step + 1,
                     previousStep: this.previousStep,
                     navigate: this.navigate
                 };
@@ -151,10 +158,10 @@ var WizardForm = function (_React$Component) {
         key: 'previousStep',
         value: function previousStep(data) {
             if (this.state.step > 0) {
-                data.currentStep = this.state.step - 1;
                 var params = {
                     nextStep: this.nextStep,
                     data: data,
+                    currentStep: this.state.step - 1,
                     previousStep: this.previousStep,
                     navigate: this.navigate
                 };
@@ -185,7 +192,6 @@ var WizardForm = function (_React$Component) {
                     AllHeaders.push(_react2.default.cloneElement(obj, headersParam));
                 });
             }
-
             return _react2.default.createElement(
                 'div',
                 null,
