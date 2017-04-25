@@ -126,6 +126,7 @@ var WizardForm = function (_React$Component) {
         key: 'nextStep',
         value: function nextStep(data) {
             if (this.state.elements.length - this.state.step > 1) {
+                data.currentStep = this.state.step + 1;
                 var params = {
                     nextStep: this.nextStep,
                     data: data,
@@ -139,7 +140,6 @@ var WizardForm = function (_React$Component) {
                     newElements.push(_react2.default.cloneElement(obj, params));
                 });
 
-                data.currentStep = this.state.step + 1;
                 this.setState({
                     step: this.state.step + 1,
                     data: data,
@@ -151,6 +151,7 @@ var WizardForm = function (_React$Component) {
         key: 'previousStep',
         value: function previousStep(data) {
             if (this.state.step > 0) {
+                data.currentStep = this.state.step - 1;
                 var params = {
                     nextStep: this.nextStep,
                     data: data,
@@ -164,7 +165,6 @@ var WizardForm = function (_React$Component) {
                     newElements.push(_react2.default.cloneElement(obj, params));
                 });
 
-                data.currentStep = this.state.step - 1;
                 this.setState({
                     step: this.state.step - 1,
                     data: data,
