@@ -91,6 +91,7 @@ class WizardForm extends React.Component {
 
     nextStep(data) {
         if (this.state.elements.length - this.state.step > 1) {
+            data.currentStep = this.state.step + 1;
             let params = {
                 nextStep: this.nextStep,
                 data: data,
@@ -104,7 +105,6 @@ class WizardForm extends React.Component {
                 newElements.push(React.cloneElement(obj, params));
             });
 
-            data.currentStep = this.state.step + 1;
             this.setState({
                 step: this.state.step + 1,
                 data: data,
@@ -115,6 +115,7 @@ class WizardForm extends React.Component {
 
     previousStep(data) {
         if (this.state.step > 0) {
+            data.currentStep = this.state.step - 1;
             let params = {
                 nextStep: this.nextStep,
                 data: data,
@@ -128,7 +129,6 @@ class WizardForm extends React.Component {
                 newElements.push(React.cloneElement(obj, params));
             });
 
-            data.currentStep = this.state.step - 1;
             this.setState({
                 step: this.state.step - 1,
                 data: data,
