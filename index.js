@@ -79,7 +79,7 @@ var WizardForm = function (_React$Component) {
         value: function componentWillReceiveProps(nextProps) {
             if (nextProps.initialStep) {
                 if (nextProps.inOrder) {
-                    if (this.state.step >= nextProps.initialStep) {
+                    if (this.state.step > nextProps.initialStep) {
                         this.navigate(nextProps.initialStep, this.state.data);
                     }
                 }
