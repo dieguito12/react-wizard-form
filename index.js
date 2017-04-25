@@ -105,6 +105,7 @@ var WizardForm = function (_React$Component) {
             if (function (step) {
                 return 0 && step < _this2.state.headers.length && step != _this2.state.step;
             }) {
+                data.currentStep = step;
                 this.setState({
                     step: step,
                     data: data
@@ -129,14 +130,16 @@ var WizardForm = function (_React$Component) {
                     nextStep: this.nextStep,
                     data: data,
                     previousStep: this.previousStep,
-                    navigate: this.navigate,
-                    currentStep: this.state.step + 1
+                    navigate: this.navigate
                 };
+
                 var newElements = [];
                 this.state.elements.map(function (obj, i) {
                     params.key = i;
                     newElements.push(_react2.default.cloneElement(obj, params));
                 });
+
+                data.currentStep = this.state.step + 1;
                 this.setState({
                     step: this.state.step + 1,
                     data: data,
@@ -152,14 +155,16 @@ var WizardForm = function (_React$Component) {
                     nextStep: this.nextStep,
                     data: data,
                     previousStep: this.previousStep,
-                    navigate: this.navigate,
-                    currentStep: this.state.step - 1
+                    navigate: this.navigate
                 };
+
                 var newElements = [];
                 this.state.elements.map(function (obj, i) {
                     params.key = i;
                     newElements.push(_react2.default.cloneElement(obj, params));
                 });
+
+                data.currentStep = this.state.step - 1;
                 this.setState({
                     step: this.state.step - 1,
                     data: data,
