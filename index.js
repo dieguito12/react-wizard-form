@@ -84,11 +84,6 @@ var WizardForm = function (_React$Component) {
                     }
                 }
             }
-            this.setState({
-                elements: nextProps.children,
-                submitElementClass: nextProps.submitElementClass,
-                nextElementClass: nextProps.nextElementClass
-            });
             var params = {
                 nextStep: this.nextStep,
                 data: this.state.data,
@@ -97,12 +92,14 @@ var WizardForm = function (_React$Component) {
                 navigate: this.navigate
             };
             var AllComponents = [];
-            this.state.elements.map(function (obj, i) {
+            nextProps.children.map(function (obj, i) {
                 params.key = i;
                 AllComponents.push(_react2.default.cloneElement(obj, params));
             });
             this.setState({
-                elements: AllComponents
+                elements: AllComponents,
+                submitElementClass: nextProps.submitElementClass,
+                nextElementClass: nextProps.nextElementClass
             });
         }
     }, {
