@@ -56,11 +56,6 @@ class WizardForm extends React.Component {
                 }
             }
         }
-        this.setState({
-            elements: nextProps.children,
-            submitElementClass: nextProps.submitElementClass,
-            nextElementClass: nextProps.nextElementClass,
-        });
         let params = {
             nextStep: this.nextStep,
             data: this.state.data,
@@ -69,14 +64,15 @@ class WizardForm extends React.Component {
             navigate: this.navigate
         }
         let AllComponents = [];
-        this.state.elements.map(function (obj, i) {
+        nextProps.children.map(function (obj, i) {
             params.key = i;
             AllComponents.push(React.cloneElement(obj, params));
         });
         this.setState({
-            elements: AllComponents
+            elements: AllComponents,
+            submitElementClass: nextProps.submitElementClass,
+            nextElementClass: nextProps.nextElementClass,
         });
-
     }
 
     navigate(step, data) {
