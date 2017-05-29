@@ -49,7 +49,7 @@ class WizardForm extends React.Component {
     }
 
     componentWillReceiveProps(nextProps){
-        if (nextProps.initialStep) {
+        if (nextProps.initialStep >= 0) {
             if (nextProps.inOrder) {
                 if (this.state.step > nextProps.initialStep) {
                     this.navigate(nextProps.initialStep, this.state.data);
@@ -112,14 +112,15 @@ class WizardForm extends React.Component {
                 newElements.push(React.cloneElement(obj, params));
             });
 
+            if (this.props.onStepChanged) {
+                this.props.onStepChanged(this.state.step + 1);
+            }
             this.setState({
                 step: this.state.step + 1,
                 data: data,
                 elements: newElements
             });
-            if (this.props.onStepChanged) {
-                this.props.onStepChanged(this.state.step + 1);
-            }
+
         }
     }
 
@@ -163,11 +164,13 @@ class WizardForm extends React.Component {
         }
         return (
             <div>
-                <ul className={this.props.headerClass} style={{display: 'inline-flex'}}>
-                    {
-                        AllHeaders
-                    }
-                </ul>
+                {AllHeaders.length != 0 &&
+                    <ul className={this.props.headerClass} style={{display: 'inline-flex'}}>
+                        {
+                            AllHeaders
+                        }
+                    </ul>
+                }
                 {this.state.elements[this.state.step]}
             </div>
         );

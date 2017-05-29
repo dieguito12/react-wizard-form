@@ -77,7 +77,7 @@ var WizardForm = function (_React$Component) {
     }, {
         key: 'componentWillReceiveProps',
         value: function componentWillReceiveProps(nextProps) {
-            if (nextProps.initialStep) {
+            if (nextProps.initialStep >= 0) {
                 if (nextProps.inOrder) {
                     if (this.state.step > nextProps.initialStep) {
                         this.navigate(nextProps.initialStep, this.state.data);
@@ -147,14 +147,14 @@ var WizardForm = function (_React$Component) {
                     newElements.push(_react2.default.cloneElement(obj, params));
                 });
 
+                if (this.props.onStepChanged) {
+                    this.props.onStepChanged(this.state.step + 1);
+                }
                 this.setState({
                     step: this.state.step + 1,
                     data: data,
                     elements: newElements
                 });
-                if (this.props.onStepChanged) {
-                    this.props.onStepChanged(this.state.step + 1);
-                }
             }
         }
     }, {
@@ -201,7 +201,7 @@ var WizardForm = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 null,
-                _react2.default.createElement(
+                AllHeaders.length != 0 && _react2.default.createElement(
                     'ul',
                     { className: this.props.headerClass, style: { display: 'inline-flex' } },
                     AllHeaders
