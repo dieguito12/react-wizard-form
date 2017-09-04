@@ -54,6 +54,8 @@ class WizardForm extends React.Component {
                 if (this.state.step > nextProps.initialStep) {
                     this.navigate(nextProps.initialStep, this.state.data);
                 }
+            } else {
+                this.navigate(nextProps.initialStep, this.state.data);
             }
         }
         let params = {
