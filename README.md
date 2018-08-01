@@ -251,6 +251,18 @@ export default YourForm;
 
 ```
 
+## Props
+
+| Prop | Description | Type |
+| --- | --- | --- |
+| `initialStep` (optional) | The step which the wizard will be (0 is the first one) | Number |
+| `headers` (optional) | Array of JSX components corresponding to the header of each form of the wizard | Array |
+| `children` (required) | JSX or Array of JSX components of each form of the wizard | JSX or Array |
+| `onStepChanged` (optional) | Callback that is executed when a step is changed | Func |
+| `initAfterMount` (optional) | Callback that is executed after the wizard is mounted | Func |
+| `initBeforeMount` (optional) | Callback that is executed before the wizard is mounted | Func |
+| `headerClass` (optional) | CSS class of the <ul> component of the header | String |
+
 ## Compatible With
 
 * [ES2015](https://babeljs.io/learn-es2015/)
