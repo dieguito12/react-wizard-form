@@ -32,8 +32,8 @@ class WizardForm extends React.Component<WizardFormProps, WizardFormState> {
         this.state.elements.forEach((obj, i) => {
             AllComponents.push(React.cloneElement(obj, { ...params, ...{ key: 'react-wizard-form-step-' + i } }));
         });
-        
-        this.setState({elements: AllComponents});
+
+        this.setState({ elements: AllComponents });
     }
 
     componentDidUpdate() {
@@ -58,7 +58,7 @@ class WizardForm extends React.Component<WizardFormProps, WizardFormState> {
         this.setState({ elements: AllComponents });
     }
 
-    navigate = (step: number, data?: Record<string, unknown> | null) : void => {
+    navigate = (step: number, data?: Record<string, unknown> | null): void => {
         if (step <= 0 && this.state.headers !== undefined && step < this.state.headers.length && step != this.state.step) {
             this.setState({
                 step: step,
@@ -70,7 +70,7 @@ class WizardForm extends React.Component<WizardFormProps, WizardFormState> {
         }
     }
 
-    onHeaderClick = (e: Event) : void => {
+    onHeaderClick = (e: Event): void => {
         let forms = this.state.elements;
         for (let i = 0; i < forms.length; i++) {
             const target = e.currentTarget as HTMLElement;
@@ -80,7 +80,7 @@ class WizardForm extends React.Component<WizardFormProps, WizardFormState> {
         }
     }
 
-    nextStep = (data?: Record<string, unknown> | null) : void => {
+    nextStep = (data?: Record<string, unknown> | null): void => {
         if (this.state.elements.length - this.state.step > 1) {
             let params = {
                 nextStep: this.nextStep,
@@ -90,10 +90,10 @@ class WizardForm extends React.Component<WizardFormProps, WizardFormState> {
                 navigate: this.navigate,
             }
 
-            const newElements : Array<React.ReactElement> = [];
+            const newElements: Array<React.ReactElement> = [];
 
             this.state.elements.forEach((obj, i) => {
-                newElements.push(React.cloneElement(obj, { ...params, ...{ key: 'react-wizard-form-step-' + i}}));
+                newElements.push(React.cloneElement(obj, { ...params, ...{ key: 'react-wizard-form-step-' + i } }));
             });
 
             if (this.props.onStepChanged) {
@@ -108,7 +108,7 @@ class WizardForm extends React.Component<WizardFormProps, WizardFormState> {
         }
     }
 
-    previousStep = (data?: Record<string, unknown> | null) : void => {
+    previousStep = (data?: Record<string, unknown> | null): void => {
         if (this.state.step > 0) {
             let params = {
                 nextStep: this.nextStep,
@@ -120,7 +120,7 @@ class WizardForm extends React.Component<WizardFormProps, WizardFormState> {
 
             const newElements: Array<React.ReactElement> = [];
             this.state.elements.forEach((obj, i) => {
-                newElements.push(React.cloneElement(obj, {...params, ...{key: 'react-wizard-form-step-' + i}}));
+                newElements.push(React.cloneElement(obj, { ...params, ...{ key: 'react-wizard-form-step-' + i } }));
             });
 
             this.setState({
@@ -140,16 +140,16 @@ class WizardForm extends React.Component<WizardFormProps, WizardFormState> {
         const headersParam = {
             onClick: this.onHeaderClick
         }
-        
+
         if (this.props.headers) {
             this.props.headers.forEach((obj, i) => {
-                AllHeaders.push(React.cloneElement(obj, {...headersParam, ...{key: 'react-wizard-form-header-' + i}}));
+                AllHeaders.push(React.cloneElement(obj, { ...headersParam, ...{ key: 'react-wizard-form-header-' + i } }));
             });
         }
         return (
             <div>
                 {AllHeaders.length != 0 &&
-                    <ul className={this.props.headerClass} style={{display: 'inline-flex'}}>
+                    <ul className={this.props.headerClass} style={{ display: 'inline-flex' }}>
                         {
                             AllHeaders
                         }

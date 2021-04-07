@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 
-export interface WizardFormProps {
+export interface WizardFormProps extends React.ClassAttributes<WizardForm> {
     initialStep?: number | 0;
 
     headers?: Array<React.ReactElement> | [];
