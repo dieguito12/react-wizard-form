@@ -2,9 +2,9 @@
 import * as React from 'react';
 
 export interface WizardFormProps {
-    initialStep: number | 0,
+    initialStep?: number | 0,
 
-    headers: Array<React.ReactElement> | [],
+    headers?: Array<React.ReactElement> | [],
 
     children: Array<React.ReactElement>,
 

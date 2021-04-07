@@ -7,7 +7,7 @@ import { WizardFormProps, WizardFormState, ClonedWizardElementProps } from '../i
 class WizardForm extends React.Component<WizardFormProps, WizardFormState> {
 
     state: WizardFormState = {
-        step: this.props.initialStep,
+        step: this.props.initialStep ? this.props.initialStep : 0,
         data: null,
         headers: this.props.headers || [],
         elements: this.props.children
