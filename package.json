@@ -1,10 +1,10 @@
 {
   "name": "react-wizard-form",
-  "version": "1.2.11",
+  "version": "2.0.0",
   "description": "Simple react wizard for any html view, form or react component",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/babel src/wizardform.js -o index.js",
+    "build": "./node_modules/.bin/babel src/index.ts -o index.js",
     "prepublish": "npm run build"
   },
   "repository": {
@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/dieguito12/react-wizard-form#readme",
   "dependencies": {
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@types/react": "^17.0.3",
