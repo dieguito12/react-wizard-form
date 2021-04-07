@@ -2,54 +2,57 @@
 import * as React from 'react';
 
 export interface WizardFormProps {
-    initialStep?: number | 0,
+    initialStep?: number | 0;
 
-    headers?: Array<React.ReactElement> | [],
+    headers?: Array<React.ReactElement> | [];
 
-    children: Array<React.ReactElement>,
+    children: Array<React.ReactElement>;
 
-    initAfterMount?: () => void,
+    initAfterMount?: () => void;
 
-    onStepChanged?: (step: number) => void,
+    onStepChanged?: (step: number) => void;
 
-    headerClass?: string
+    headerClass?: string;
 }
 
 export interface WizardFormState {
-    step: number,
+    step: number;
 
-    data?: Record<string, unknown> | null,
+    data?: Record<string, unknown> | null;
 
-    headers?: Array<React.ReactElement> | [],
+    headers?: Array<React.ReactElement> | [];
 
-    elements: Array<React.ReactElement>
+    elements: Array<React.ReactElement>;
 }
 
 export type ClonedWizardElementProps = {
-    nextStep: (data: Record<string, unknown> | undefined) => void,
+    nextStep: (data: Record<string, unknown> | undefined) => void;
 
-    previousStep: (data: Record<string, unknown> | undefined) => void,
+    previousStep: (data: Record<string, unknown> | undefined) => void;
 
-    navigate: (step: number, data: Record<string, unknown> | null) => void,
+    navigate: (step: number, data: Record<string, unknown> | null) => void;
 
-    data?: Record<string, unknown> | null,
+    data?: Record<string, unknown> | null;
 
-    currentStep: number
+    currentStep: number;
 }
 
 declare class WizardForm extends React.Component<WizardFormProps, WizardFormState> {
-    nextStep: (data: Record<string, unknown> | undefined) => void
+    nextStep: (data: Record<string, unknown> | undefined) => void;
 
-    previousStep: (data: Record<string, unknown> | undefined) => void
+    previousStep: (data: Record<string, unknown> | undefined) => void;
 
-    navigate: (step: number, data: Record<string, unknown> | undefined) => void
+    navigate: (step: number, data: Record<string, unknown> | undefined) => void;
 
-    data: Record<string, unknown> | null
+    onHeaderClick: (e: Event) => void;
 
-    currentStep: number
-}
+    render: () => JSX.Element;
 
-declare module 'react-wizard-form' {
+    state: WizardFormState;
+
+    componentDidMount: () => void;
+
+    componentDidUpdate: () => void;
 }
 
 export default WizardForm;
