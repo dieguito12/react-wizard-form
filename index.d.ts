@@ -49,4 +49,7 @@ declare class WizardForm extends React.Component<WizardFormProps, WizardFormStat
     currentStep: number
 }
 
+declare module 'react-wizard-form' {
+}
+
 export default WizardForm;
