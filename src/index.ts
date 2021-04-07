@@ -1,1 +1,1 @@
-import WizardForm from './wizardform';
+export * from './wizardform';

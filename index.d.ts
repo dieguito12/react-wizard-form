@@ -37,16 +37,16 @@ export type ClonedWizardElementProps = {
     currentStep: number
 }
 
-// declare class WizardForm extends React.Component<WizardFormProps, WizardFormState> {
-//     nextStep: (data: Record<string, unknown> | undefined) => void
+declare class WizardForm extends React.Component<WizardFormProps, WizardFormState> {
+    nextStep: (data: Record<string, unknown> | undefined) => void
 
-//     previousStep: (data: Record<string, unknown> | undefined) => void
+    previousStep: (data: Record<string, unknown> | undefined) => void
 
-//     navigate: (step: number, data: Record<string, unknown> | undefined) => void
+    navigate: (step: number, data: Record<string, unknown> | undefined) => void
 
-//     data: Record<string, unknown> | null
+    data: Record<string, unknown> | null
 
-//     currentStep: number
-// }
+    currentStep: number
+}
 
-// export default WizardForm;
+export default WizardForm;
