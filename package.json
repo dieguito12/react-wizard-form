@@ -2,7 +2,6 @@
   "name": "react-wizard-form",
   "version": "2.0.2",
   "description": "Simple react wizard for any html view, form or react component",
-  "main": "index.js",
   "scripts": {
     "build": "rm -rf ./lib && tsc",
     "prepare": "yarn build",
