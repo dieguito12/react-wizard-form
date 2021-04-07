@@ -30,32 +30,31 @@ class WizardForm extends React.Component<WizardFormProps, WizardFormState> {
         let AllComponents: Array<any> = [];
 
         this.state.elements.forEach((obj, i) => {
-            AllComponents.push(React.cloneElement(obj, { ...params, ...{ key: 'react-wizard-form-step-' + i } }));
+            AllComponents.push(React.cloneElement(obj, { ...params, ...{ key: 'react-wizard-form-step-' + i }, ...obj.props }));
         });
 
         this.setState({ elements: AllComponents });
+    }
+
+    static getDerivedStateFromProps(nextProps: WizardFormProps, prevState: WizardFormState) {
+        const params = {
+            data: prevState.data,
+            currentStep: prevState.step,
+        };
+
+        let AllComponents: Array<any> = [];
+
+        prevState.elements.forEach((obj, i) => {
+            AllComponents.push(React.cloneElement(obj, { ...params, ...{ key: 'react-wizard-form-step-' + i }, ...nextProps.children[i].props }));
+        });
+
+        return { elements: AllComponents };
     }
 
     componentDidUpdate() {
         if (this.props.initialStep && this.props.initialStep >= 0) {
             this.navigate(this.props.initialStep, this.state.data);
         }
-
-        const params: ClonedWizardElementProps = {
-            nextStep: this.nextStep,
-            data: this.state.data,
-            currentStep: this.state.step,
-            previousStep: this.previousStep,
-            navigate: this.navigate
-        };
-
-        let AllComponents: Array<any> = [];
-
-        this.state.elements.forEach((obj, i) => {
-            AllComponents.push(React.cloneElement(obj, { ...params, ...{ key: 'react-wizard-form-step-' + i } }));
-        });
-
-        this.setState({ elements: AllComponents });
     }
 
     navigate = (step: number, data?: Record<string, unknown> | null): void => {
@@ -93,7 +92,7 @@ class WizardForm extends React.Component<WizardFormProps, WizardFormState> {
             const newElements: Array<React.ReactElement> = [];
 
             this.state.elements.forEach((obj, i) => {
-                newElements.push(React.cloneElement(obj, { ...params, ...{ key: 'react-wizard-form-step-' + i } }));
+                newElements.push(React.cloneElement(obj, { ...params, ...{ key: 'react-wizard-form-step-' + i }, ...obj.props }));
             });
 
             if (this.props.onStepChanged) {
@@ -120,7 +119,7 @@ class WizardForm extends React.Component<WizardFormProps, WizardFormState> {
 
             const newElements: Array<React.ReactElement> = [];
             this.state.elements.forEach((obj, i) => {
-                newElements.push(React.cloneElement(obj, { ...params, ...{ key: 'react-wizard-form-step-' + i } }));
+                newElements.push(React.cloneElement(obj, { ...params, ...{ key: 'react-wizard-form-step-' + i }, ...obj.props }));
             });
 
             this.setState({
@@ -143,7 +142,7 @@ class WizardForm extends React.Component<WizardFormProps, WizardFormState> {
 
         if (this.props.headers) {
             this.props.headers.forEach((obj, i) => {
-                AllHeaders.push(React.cloneElement(obj, { ...headersParam, ...{ key: 'react-wizard-form-header-' + i } }));
+                AllHeaders.push(React.cloneElement(obj, { ...headersParam, ...{ key: 'react-wizard-form-header-' + i }, ...obj.props }));
             });
         }
         return (
