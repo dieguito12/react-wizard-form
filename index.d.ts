@@ -20,7 +20,7 @@ export interface WizardFormState {
 
     data?: Record<string, unknown> | null,
 
-    headers: Array<React.ReactElement> | [],
+    headers?: Array<React.ReactElement> | [],
 
     elements: Array<React.ReactElement>
 }

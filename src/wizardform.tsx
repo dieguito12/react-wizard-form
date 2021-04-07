@@ -59,7 +59,7 @@ class WizardForm extends React.Component<WizardFormProps, WizardFormState> {
     }
 
     navigate = (step: number, data?: Record<string, unknown> | null) : void => {
-        if (step <= 0 && step < this.state.headers.length && step != this.state.step) {
+        if (step <= 0 && this.state.headers !== undefined && step < this.state.headers.length && step != this.state.step) {
             this.setState({
                 step: step,
                 data: data
