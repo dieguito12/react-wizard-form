@@ -1,6 +1,6 @@
 {
   "name": "react-wizard-form",
-  "version": "2.0.12",
+  "version": "2.1.0",
   "description": "Simple react wizard for any html view, form or react component",
   "main": "./lib/index.js",
   "scripts": {
