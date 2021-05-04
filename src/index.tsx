@@ -58,11 +58,27 @@ class WizardForm extends React.Component<WizardFormProps, WizardFormState> {
     }
 
     navigate = (step: number, data?: Record<string, unknown> | null): void => {
-        if (step <= 0 && this.state.headers !== undefined && step < this.state.headers.length && step != this.state.step) {
+        if (step >= 0 && step < this.state.elements.length && step !== this.state.step) {
+            let params = {
+                nextStep: this.nextStep,
+                data: data,
+                currentStep: this.state.step + 1,
+                previousStep: this.previousStep,
+                navigate: this.navigate
+            }
+
+            const newElements: Array<React.ReactElement> = [];
+
+            this.state.elements.forEach((obj, i) => {
+                newElements.push(React.cloneElement(obj, { ...params, ...{ key: 'react-wizard-form-step-' + i }, ...obj.props }));
+            });
+
             this.setState({
                 step: step,
-                data: data
+                data: data,
+                elements: newElements
             });
+
             if (this.props.onStepChanged) {
                 this.props.onStepChanged(step);
             }
